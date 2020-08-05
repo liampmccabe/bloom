@@ -55,6 +55,8 @@ const cursorTool: any = {
 	draw: "crosshair"
 }
 
+const elementInterface = {} as IElement
+
 export function Canvas({ template }: ICanvasProps) {
 	const [canvasState, setCanvasState] = useState<ICanvasState>({
 		pages: [],
@@ -154,6 +156,25 @@ export function Canvas({ template }: ICanvasProps) {
 
 			e.stopPropagation()
 		}
+
+		if (canvasState.toolSelected === "text") {
+			const index = +e.toElement.dataset.index
+
+			addElement(
+				index,
+				<Element
+					{...elementInterface}
+					type="paragraph"
+					top={e.offsetY}
+					left={e.offsetX}
+					width={200}
+					height={100}
+					text="Add some text..."
+					selected={true}
+					editing={true}
+				/>
+			)
+		}
 	}
 
 	const handleMouseMove = (e: any) => {
@@ -195,28 +216,26 @@ export function Canvas({ template }: ICanvasProps) {
 
 		const url = e.dataTransfer.getData("URL")
 
-		console.log(e)
-
 		if (e.toElement.dataset && e.toElement.dataset.index) {
 			const index = +e.toElement.dataset.index
 
-			const elementInterface = {} as IElement
-
-			setCanvasState({
-				...canvasState,
-				pages: [
-					...canvasState.pages.slice(0, index),
-					{
-						...canvasState.pages[index],
-						elements: [
-							...canvasState.pages[index].elements,
-							<Element {...elementInterface} type="image" src={url} top={e.offsetY} left={e.offsetX} />
-						]
-					},
-					...canvasState.pages.slice(index, canvasState.pages.length)
-				]
-			})
+			addElement(index, <Element {...elementInterface} type="image" src={url} top={e.offsetY} left={e.offsetX} />)
 		}
+	}
+
+	const addElement = (pageIndex: number, element: any) => {
+		setCanvasState({
+			...canvasState,
+			toolSelected: "move",
+			pages: [
+				...canvasState.pages.slice(0, pageIndex),
+				{
+					...canvasState.pages[pageIndex],
+					elements: [...canvasState.pages[pageIndex].elements, element]
+				},
+				...canvasState.pages.slice(pageIndex, canvasState.pages.length)
+			]
+		})
 	}
 
 	useEventListener("wheel", handleWheel, viewportEl.current)
@@ -232,7 +251,9 @@ export function Canvas({ template }: ICanvasProps) {
 	}, [])
 
 	useEffect(() => {
-		console.log(key)
+		// if(canvasState.selected) {
+		// 	return false
+		// }
 
 		//-
 		if (key === 189) {
