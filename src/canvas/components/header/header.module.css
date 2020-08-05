@@ -2,7 +2,6 @@
 	z-index: 2;
 	left: 20px;
 	top: 20px;
-
 	position: fixed;
 	border-radius: var(--border-radius-normal);
 	background: var(--color-white);
@@ -10,16 +9,19 @@
 }
 
 .logo {
+	padding: 4px 10px;
+	font-size: 18px;
 	font-weight: 700;
 	display: inline-block;
 	cursor: pointer;
 }
 
 .container > div {
-	padding: 10px;
 	display: inline-block;
 }
 
 .container > div:last-child {
+	padding: 10px;
+	font-weight: 600;
 	border-left: 1px #eee solid;
 }

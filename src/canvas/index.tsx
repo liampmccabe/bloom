@@ -141,7 +141,7 @@ export function Canvas({ template }: ICanvasProps) {
 	}
 
 	const handleMouseDown = (e: any) => {
-		if (e.button === 1) {
+		if (e.button === 1 || canvasState.toolSelected === "hand") {
 			setCanvasState({
 				...canvasState,
 				panning: true,
@@ -151,6 +151,8 @@ export function Canvas({ template }: ICanvasProps) {
 					y: e.clientY - y
 				}
 			})
+
+			e.stopPropagation()
 		}
 	}
 
@@ -175,8 +177,7 @@ export function Canvas({ template }: ICanvasProps) {
 	const handleMouseUp = (e: any) => {
 		setCanvasState({
 			...canvasState,
-			panning: false,
-			toolSelected: "move"
+			panning: false
 		})
 	}
 
@@ -292,16 +293,32 @@ export function Canvas({ template }: ICanvasProps) {
 	const setTool = (tool: string) => setCanvasState({ ...canvasState, toolSelected: tool })
 
 	const moveUp = () =>
-		setCanvasState({ ...canvasState, position: { x: canvasState.position.x, y: canvasState.position.y + 20 } })
+		setCanvasState({
+			...canvasState,
+			position: { x: canvasState.position.x, y: canvasState.position.y + 20 },
+			smoothPosition: { x: canvasState.position.x, y: canvasState.position.y + 20 }
+		})
 
 	const moveDown = () =>
-		setCanvasState({ ...canvasState, position: { x: canvasState.position.x, y: canvasState.position.y - 20 } })
+		setCanvasState({
+			...canvasState,
+			position: { x: canvasState.position.x, y: canvasState.position.y - 20 },
+			smoothPosition: { x: canvasState.position.x, y: canvasState.position.y - 20 }
+		})
 
 	const moveLeft = () =>
-		setCanvasState({ ...canvasState, position: { x: canvasState.position.x + 20, y: canvasState.position.y } })
+		setCanvasState({
+			...canvasState,
+			position: { x: canvasState.position.x + 20, y: canvasState.position.y },
+			smoothPosition: { x: canvasState.position.x + 20, y: canvasState.position.y }
+		})
 
 	const moveRight = () =>
-		setCanvasState({ ...canvasState, position: { x: canvasState.position.x - 20, y: canvasState.position.y } })
+		setCanvasState({
+			...canvasState,
+			position: { x: canvasState.position.x - 20, y: canvasState.position.y },
+			smoothPosition: { x: canvasState.position.x - 20, y: canvasState.position.y }
+		})
 
 	const zoomIn = () => setCanvasState({ ...canvasState, zoom: canvasState.zoom + 0.05 })
 
@@ -362,6 +379,7 @@ export function Canvas({ template }: ICanvasProps) {
 				</Header>
 				<UndoRedo onUndo={() => {}} onRedo={() => {}} />
 				<Tools
+					selected={toolSelected}
 					onMove={() => setTool("move")}
 					onHand={() => setTool("hand")}
 					onText={() => setTool("text")}

@@ -1,8 +1,9 @@
 .container {
 	z-index: 2;
-	left: 170px;
+	left: 180px;
 	top: 20px;
-
+	opacity: 0.3;
+	pointer-events: none;
 	position: fixed;
 	border-radius: var(--border-radius-normal);
 	background: var(--color-white);

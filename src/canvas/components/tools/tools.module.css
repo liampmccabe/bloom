@@ -6,6 +6,7 @@
 }
 
 .bar {
+	overflow: hidden;
 	border-radius: var(--border-radius-normal);
 	background: var(--color-white);
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
@@ -23,11 +24,7 @@
 	border: 0;
 }
 
-.imageEditor {
-	top: 50px;
-	right: 0px;
-	width: 242px;
-	position: absolute;
-	border-radius: var(--border-radius-normal);
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+.selected {
+	color: white;
+	background: black;
 }

@@ -2,7 +2,7 @@
 	z-index: 2;
 	right: 20px;
 	bottom: 20px;
-
+	overflow: hidden;
 	position: fixed;
 	border-radius: var(--border-radius-normal);
 	background: var(--color-white);
@@ -15,6 +15,11 @@
 	display: inline-block;
 	cursor: pointer;
 	border-left: 1px #eee solid;
+}
+
+.container div:active {
+	color: white;
+	background: black;
 }
 
 .container div:first-child {
