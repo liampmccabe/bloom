@@ -1,0 +1,38 @@
+.container {
+	top: 0;
+	left: 0;
+	width: 200px;
+	z-index: 10;
+	position: fixed;
+	border-radius: var(--border-radius-normal);
+	background: var(--color-white);
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.list {
+	margin: 0;
+	padding: 10px 0;
+	list-style: none;
+}
+
+.listItem {
+	padding: 10px;
+	line-height: 1;
+	display: flex;
+	cursor: pointer;
+}
+
+.listItem:hover {
+	background: var(--color-grey-light);
+}
+
+.listItem span {
+	margin-left: auto;
+	color: var(--color-grey);
+}
+
+.listItemDivide {
+	height: 1px;
+	margin: 10px 0;
+	background: var(--color-grey-light);
+}

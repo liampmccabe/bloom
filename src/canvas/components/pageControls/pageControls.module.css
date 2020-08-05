@@ -1,0 +1,30 @@
+.container {
+	top: -40px;
+	width: 100%;
+	padding: 5px 0;
+	display: flex;
+	position: absolute;
+}
+
+.info {
+	padding-top: 5px;
+}
+
+.controls {
+	display: flex;
+	margin-left: auto;
+	transition: all 0.3s ease;
+}
+
+.controls span {
+	cursor: pointer;
+	padding: 5px;
+	margin-left: 10px;
+	display: block;
+	color: var(--color-grey);
+	border-radius: var(--border-radius-normal);
+}
+
+.controls span:hover {
+	background: rgba(0, 0, 0, 0.1);
+}

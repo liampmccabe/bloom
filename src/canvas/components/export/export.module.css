@@ -1,0 +1,7 @@
+.container {
+}
+
+.container > div {
+	cursor: pointer;
+	display: inline-block;
+}

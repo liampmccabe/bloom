@@ -1,0 +1,84 @@
+.container {
+	top: 0;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	display: inline-block;
+}
+
+.top {
+	top: -15px;
+	bottom: auto;
+}
+
+.right {
+	right: -15px;
+	left: auto;
+}
+
+.bottom {
+	top: auto;
+	bottom: -15px;
+}
+
+.left {
+	right: auto;
+	left: -15px;
+}
+
+.top.left {
+	cursor: nwse-resize;
+}
+
+.top.left .handle {
+	top: auto;
+	left: auto;
+	right: 0;
+	bottom: 0;
+}
+
+.top.right {
+	cursor: nesw-resize;
+}
+
+.top.right .handle {
+	top: auto;
+	left: 0;
+	right: auto;
+	bottom: 0;
+}
+
+.bottom.left {
+	cursor: nesw-resize;
+}
+
+.bottom.left .handle {
+	top: 0;
+	left: auto;
+	right: 0;
+	bottom: auto;
+}
+
+.bottom.right {
+	cursor: nwse-resize;
+}
+
+.bottom.right .handle {
+	top: 0;
+	left: 0;
+	right: auto;
+	bottom: auto;
+}
+
+.handle {
+	top: 0;
+	left: 0;
+	width: 8px;
+	height: 8px;
+	pointer-events: none;
+	position: absolute;
+	display: inline-block;
+	background: var(--color-white);
+	border: 1px var(--color-blue) solid;
+}

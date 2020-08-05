@@ -1,0 +1,22 @@
+.container {
+	z-index: 2;
+	right: 20px;
+	bottom: 20px;
+
+	position: fixed;
+	border-radius: var(--border-radius-normal);
+	background: var(--color-white);
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container div {
+	padding: 10px;
+	font-weight: 600;
+	display: inline-block;
+	cursor: pointer;
+	border-left: 1px #eee solid;
+}
+
+.container div:first-child {
+	border: 0;
+}
