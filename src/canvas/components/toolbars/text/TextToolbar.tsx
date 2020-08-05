@@ -1,34 +1,38 @@
 import Quill from "quill"
-import React, { useEffect } from "react"
-
-import textToolbarStyles from "./textToolbar.module.css"
+import { useState, useEffect } from "react"
 
 import "src/vendor/quill/bubble.css"
 
 const toolbarOptions = [
-	["bold", "italic", "underline"]
-	// ["bold", "italic", "underline", "strike"]
-
-	// [{ size: ["small", false, "large", "huge"] }],
-	// [{ header: [1, 2, 3, 4, 5, 6, false] }],
-
-	// [{ color: [] }, { background: [] }]
-	// [{ align: [] }],
-
-	// ["clean"]
+	["bold", "italic", "underline"],
+	[{ color: [] }, { background: [] }]
 ]
 
 interface ITextToolbar {
+	editing: boolean
 	forwardRef: any
 }
 
-export function TextToolbar(props: ITextToolbar) {
+export function TextToolbar({ editing, forwardRef }: ITextToolbar) {
+	const [editor, setEditor] = useState<any>(null)
 	useEffect(() => {
-		new Quill(props.forwardRef.current, {
-			modules: { toolbar: toolbarOptions },
-			theme: "bubble"
-		})
-	}, [])
+		if (editing) {
+			if (editor) {
+				editor.enable()
+			} else {
+				setEditor(
+					new Quill(forwardRef.current, {
+						modules: { toolbar: toolbarOptions },
+						theme: "bubble"
+					})
+				)
+			}
+		} else {
+			if (editor) {
+				editor.disable()
+			}
+		}
+	}, [editing])
 
 	return null
 }

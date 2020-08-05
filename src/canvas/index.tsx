@@ -21,7 +21,6 @@ import canvasStyles from "src/canvas/index.module.css"
 import { useKey } from "./utils/key"
 import { useEventListener } from "./utils/event"
 import { awaitRaf } from "./utils/raf"
-import { setCache, getCache } from "./utils/cache"
 
 interface ICanvasProps {
 	template: IGroup
@@ -163,6 +162,10 @@ export function Canvas({ template }: ICanvasProps) {
 					position: {
 						x: e.clientX - canvasState.mousedownPosition.x,
 						y: e.clientY - canvasState.mousedownPosition.y
+					},
+					smoothPosition: {
+						x: canvasState.smoothPosition.x + (canvasState.position.x - canvasState.smoothPosition.x) * 0.5,
+						y: canvasState.smoothPosition.y + (canvasState.position.y - canvasState.smoothPosition.y) * 0.5
 					}
 				})
 			}
@@ -343,7 +346,7 @@ export function Canvas({ template }: ICanvasProps) {
 
 	const {
 		pages,
-		loaded,
+		panning,
 		smoothPosition: { x, y },
 		zoom,
 		toolSelected,
@@ -353,7 +356,7 @@ export function Canvas({ template }: ICanvasProps) {
 	return (
 		<div className={canvasStyles.viewport} ref={viewportEl} style={{ cursor: cursorTool[toolSelected] }}>
 			<div className={canvasStyles.tools}>
-				{toolSelected === "move" && <Selector />}
+				{toolSelected === "move" && !panning && <Selector />}
 				<Header>
 					<Export />
 				</Header>

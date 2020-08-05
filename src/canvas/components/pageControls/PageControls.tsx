@@ -14,8 +14,8 @@ export function PageControls({ index, onDuplicatePage, onDeletePage, onAddNewPag
 	return (
 		<div className={pageControlsStyles.container}>
 			<div className={pageControlsStyles.info}>
-				<span>Page {index + 1} - </span>
-				<span>Add page title</span>
+				<span>Page {index + 1} </span>
+				{/* <span>Add page title</span> */}
 			</div>
 			<div className={pageControlsStyles.controls}>
 				<span onClick={onDuplicatePage}>Duplicate page</span>

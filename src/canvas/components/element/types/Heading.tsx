@@ -8,7 +8,7 @@ export function Heading(props: any) {
 	return (
 		<>
 			<span>{props.text}</span>
-			{props.editing && <TextToolbar forwardRef={headingRef} />}
+			<TextToolbar forwardRef={headingRef} editing={props.editing} />
 		</>
 	)
 }

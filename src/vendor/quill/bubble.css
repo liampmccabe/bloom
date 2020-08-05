@@ -42,6 +42,9 @@
 	white-space: pre-wrap;
 	word-wrap: break-word;
 }
+.ql-disabled .ql-editor > * {
+	cursor: default;
+}
 .ql-editor > * {
 	cursor: text;
 }
@@ -533,6 +536,8 @@
 	visibility: hidden;
 }
 .ql-bubble .ql-tooltip {
+	z-index: 999;
+	min-width: 176px;
 	position: absolute;
 	transform: translateY(10px);
 }

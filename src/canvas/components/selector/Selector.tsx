@@ -54,6 +54,7 @@ export function Selector() {
 				if (path?.length > 0) {
 					if (
 						path[1].className &&
+						path[1].className.includes &&
 						path[1].className.includes(elementStyles.container) &&
 						!path[1].className.includes(elementStyles.selected) &&
 						!restrictedElems.includes(path[0].localName)

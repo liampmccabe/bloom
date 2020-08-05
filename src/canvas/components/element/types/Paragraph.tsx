@@ -8,7 +8,7 @@ export function Paragraph(props: any) {
 	return (
 		<>
 			<span ref={paragraphRef}>{props.text}</span>
-			{props.editing && <TextToolbar forwardRef={paragraphRef} />}
+			<TextToolbar forwardRef={paragraphRef} editing={props.editing} />
 		</>
 	)
 }

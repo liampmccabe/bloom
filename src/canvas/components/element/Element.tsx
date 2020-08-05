@@ -186,7 +186,9 @@ export function Element(props: IElement) {
 
 	const handleMouseLeave = (e: any) => {}
 
-	const handleClick = (e: any) => {}
+	const handleClick = (e: any) => {
+		e.preventDefault()
+	}
 
 	const handleContextMenu = (e: any) => {
 		e.preventDefault()
