@@ -224,18 +224,20 @@ export function Canvas({ template }: ICanvasProps) {
 	}
 
 	const addElement = (pageIndex: number, element: any) => {
-		setCanvasState({
-			...canvasState,
-			toolSelected: "move",
-			pages: [
-				...canvasState.pages.slice(0, pageIndex),
-				{
-					...canvasState.pages[pageIndex],
-					elements: [...canvasState.pages[pageIndex].elements, element]
-				},
-				...canvasState.pages.slice(pageIndex, canvasState.pages.length)
-			]
-		})
+		if (canvasState.pages && canvasState.pages[pageIndex]) {
+			setCanvasState({
+				...canvasState,
+				toolSelected: "move",
+				pages: [
+					...canvasState.pages.slice(0, pageIndex),
+					{
+						...canvasState.pages[pageIndex],
+						elements: [...canvasState.pages[pageIndex].elements, element]
+					},
+					...canvasState.pages.slice(pageIndex, canvasState.pages.length)
+				]
+			})
+		}
 	}
 
 	useEventListener("wheel", handleWheel, viewportEl.current)
@@ -254,6 +256,13 @@ export function Canvas({ template }: ICanvasProps) {
 		// if(canvasState.selected) {
 		// 	return false
 		// }
+
+		// console.log(key)
+
+		//ESC
+		if (key === 27) {
+			//Deselect all elements
+		}
 
 		//-
 		if (key === 189) {
@@ -408,7 +417,7 @@ export function Canvas({ template }: ICanvasProps) {
 				/>
 				<Move x={x} y={y} onMoveUp={moveUp} onMoveDown={moveDown} onMoveLeft={moveLeft} onMoveRight={moveRight} />
 				<Zoom amount={zoom} onZoomIn={zoomIn} onZoomOut={zoomOut} onZoomClick={zoom100} />
-				{/* <Draw /> */}
+				{toolSelected === "draw" && <Draw />}
 				{/* <ColorPicker /> */}
 			</div>
 			<div className={canvasStyles.container}>
