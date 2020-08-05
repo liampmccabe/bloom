@@ -43,6 +43,10 @@ interface ICanvasState {
 		x: number
 		y: number
 	}
+	transformOrigin: {
+		x: number
+		y: number
+	}
 	toolSelected: string
 	pageSelected: number
 }
@@ -75,12 +79,17 @@ export function Canvas({ template }: ICanvasProps) {
 			x: 0,
 			y: 0
 		},
+		transformOrigin: {
+			x: 0,
+			y: 0
+		},
 		toolSelected: "move",
 		pageSelected: 0
 	})
 
 	const key = useKey()
 	const viewportEl = useRef<any>(null)
+	const pagesEl = useRef<any>(null)
 
 	const loadTemplate = () => {
 		const pages = []
@@ -136,6 +145,10 @@ export function Canvas({ template }: ICanvasProps) {
 					smoothPosition: {
 						x: canvasState.smoothPosition.x + (canvasState.position.x - canvasState.smoothPosition.x) * 0.5,
 						y: canvasState.smoothPosition.y + (canvasState.position.y - canvasState.smoothPosition.y) * 0.5
+					},
+					transformOrigin: {
+						x: ((canvasState.position.x + pagesEl.current.clientWidth) / window.innerWidth) * 100 + 200,
+						y: ((canvasState.position.y + pagesEl.current.clientHeight) / window.innerHeight) * 100 + 200
 					}
 				})
 			}
@@ -395,6 +408,7 @@ export function Canvas({ template }: ICanvasProps) {
 		pages,
 		panning,
 		smoothPosition: { x, y },
+		transformOrigin,
 		zoom,
 		toolSelected,
 		pageSelected
@@ -421,7 +435,13 @@ export function Canvas({ template }: ICanvasProps) {
 				{/* <ColorPicker /> */}
 			</div>
 			<div className={canvasStyles.container}>
-				<div className={canvasStyles.pages} style={{ transform: `scale(${zoom}) translate3d(${x}px, ${y}px, 0)` }}>
+				<div
+					className={canvasStyles.pages}
+					ref={pagesEl}
+					style={{
+						transformOrigin: `${transformOrigin.x}px ${transformOrigin.y}px`,
+						transform: `scale(${zoom}) translate3d(${x}px, ${y}px, 0)`
+					}}>
 					{pages.map((page: any, index: number) => {
 						return (
 							<div
