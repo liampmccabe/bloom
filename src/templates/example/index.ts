@@ -4,122 +4,55 @@ export const ExampleTemplate: IGroup = {
 	pages: [
 		{
 			title: "First page",
+			background: "/templates/example/img/cover.png",
 			elements: [
 				{
-					type: "paragraph",
+					type: "heading",
 					name: "title",
 					left: 40,
 					top: 100,
 					width: 400,
-					text:
-						"Not just a well crafted logo but how something makes you feel. How it reacts, behaves and breaths to an ever-changing environment. Great brands don’t only thrive because of their roots, but their drive to evolve. Core values should not only distinguish a company, but also give it room to grow. Only then will it become timeless.",
+					text: "Snoop",
 					locked: true
-				},
-				{
-					type: "paragraph",
-					name: "title",
-					left: 40,
-					top: 250,
-					width: 400,
-					text:
-						"At C&W we’re capable of handling all stages of a products lifecycle. Whether it’s an initial ‘Discovery’ meeting for understanding requirements or the development of entirely new features, we see ourselves as a creative partner and an extension to your existing team. We’re in this for the long term, your success is our success."
-				},
-				{
-					type: "paragraph",
-					name: "title",
-					left: 40,
-					top: 400,
-					width: 400,
-					text:
-						"Communication is key in almost every aspect of life and building a company and brand is no different. With effective communication, companies can understand their customers and realise that they're in this together. That the importance of attracting new business is just as important as satisfying a persons needs and wants."
-				},
-				{
-					type: "image",
-					name: "image",
-					left: 40,
-					top: 600,
-					width: 100,
-					src: "logo192.png",
-					locked: true
-				},
-				{
-					type: "image",
-					name: "image",
-					left: 240,
-					top: 600,
-					width: 100,
-					src: "logo192.png"
-				},
-				{
-					type: "image",
-					name: "image",
-					left: 440,
-					top: 600,
-					width: 100,
-					src: "logo192.png"
 				}
 			]
 		},
 		{
 			title: "Second page",
+			background: "/templates/example/img/art.png",
 			elements: [
 				{
-					type: "paragraph",
-					name: "title",
-					left: 40,
-					top: 100,
-					width: 400,
-					text:
-						"Not just a well crafted logo but how something makes you feel. How it reacts, behaves and breaths to an ever-changing environment. Great brands don’t only thrive because of their roots, but their drive to evolve. Core values should not only distinguish a company, but also give it room to grow. Only then will it become timeless.",
-					locked: true
-				},
-				{
-					type: "paragraph",
-					name: "title",
-					left: 40,
-					top: 250,
-					width: 400,
-					text:
-						"At C&W we’re capable of handling all stages of a products lifecycle. Whether it’s an initial ‘Discovery’ meeting for understanding requirements or the development of entirely new features, we see ourselves as a creative partner and an extension to your existing team. We’re in this for the long term, your success is our success."
-				},
-				{
-					type: "paragraph",
-					name: "title",
-					left: 40,
-					top: 400,
-					width: 400,
-					text:
-						"Communication is key in almost every aspect of life and building a company and brand is no different. With effective communication, companies can understand their customers and realise that they're in this together. That the importance of attracting new business is just as important as satisfying a persons needs and wants."
-				},
-				{
 					type: "image",
-					name: "image",
-					left: 40,
-					top: 600,
-					width: 100,
-					src: "logo192.png",
+					name: "title",
+					left: 20,
+					top: 120,
+					width: 220,
+					height: 220,
 					locked: true
 				},
 				{
 					type: "image",
-					name: "image",
-					left: 240,
-					top: 600,
-					width: 100,
-					src: "logo192.png"
+					name: "title",
+					left: 300,
+					top: 120,
+					width: 220,
+					height: 220,
+					locked: true
 				},
 				{
 					type: "image",
-					name: "image",
-					left: 440,
-					top: 600,
-					width: 100,
-					src: "logo192.png"
+					name: "title",
+					left: 540,
+					top: 120,
+					width: 220,
+					height: 220,
+					locked: true
 				}
 			]
 		},
 		{
 			title: "Third page",
+			background: "/templates/example/img/history.png",
 			elements: [
 				{
 					type: "paragraph",
@@ -135,6 +68,7 @@ export const ExampleTemplate: IGroup = {
 		},
 		{
 			title: "Fourth page",
+			background: "/templates/example/img/tree.png",
 			elements: [
 				{
 					type: "paragraph",
@@ -150,6 +84,15 @@ export const ExampleTemplate: IGroup = {
 		},
 		{
 			title: "Fifth page",
+			elements: []
+		},
+		{
+			title: "Sixth page",
+			elements: []
+		},
+		{
+			title: "Fourth page",
+			background: "/templates/example/img/report.png",
 			elements: [
 				{
 					type: "paragraph",
@@ -164,7 +107,8 @@ export const ExampleTemplate: IGroup = {
 			]
 		},
 		{
-			title: "Sixth page",
+			title: "Fourth page",
+			background: "/templates/example/img/quiz.png",
 			elements: [
 				{
 					type: "paragraph",

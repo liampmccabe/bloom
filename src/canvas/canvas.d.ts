@@ -1,5 +1,9 @@
 export interface IGroup {
-	pages: { title: string; elements: Partial<IElement>[] }[]
+	pages: {
+		title: string
+		background?: string
+		elements: Partial<IElement>[]
+	}[]
 }
 
 export interface IElement {

@@ -270,11 +270,26 @@ export function Canvas({ template }: ICanvasProps) {
 		// 	return false
 		// }
 
-		// console.log(key)
+		console.log(key)
+
+		//CMD + Y
+		if (key === 91 && key === 89) {
+			console.log("redo")
+		}
+
+		//CMD + Z
+		if (key === 91 && key === 90) {
+			console.log("undo")
+		}
+
+		//Backspace
+		if (key === 27) {
+			console.log("remove selected element")
+		}
 
 		//ESC
 		if (key === 27) {
-			//Deselect all elements
+			console.log("deselect all elements")
 		}
 
 		//-
@@ -459,7 +474,10 @@ export function Canvas({ template }: ICanvasProps) {
 									/>
 								)}
 
-								<div className={canvasStyles.page} data-index={index}>
+								<div
+									className={canvasStyles.page}
+									data-index={index}
+									style={{ backgroundImage: `url(${page.background})` }}>
 									{page.elements}
 								</div>
 							</div>

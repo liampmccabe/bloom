@@ -14,6 +14,7 @@
 		"@types/react-color": "^3.0.4",
 		"@types/react-dom": "^16.9.0",
 		"@types/react-filepond": "^5.0.5",
+		"comlink": "^4.3.0",
 		"filepond": "^4.19.2",
 		"filepond-plugin-image-crop": "^2.0.4",
 		"filepond-plugin-image-edit": "^1.6.1",
